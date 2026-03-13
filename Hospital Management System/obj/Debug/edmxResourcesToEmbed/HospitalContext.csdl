@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ayanhalder2705_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Appointment">
+    <Key>
+      <PropertyRef Name="AppointmentID" />
+    </Key>
+    <Property Name="AppointmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Patient_User_ID" Type="Int32" Nullable="false" />
+    <Property Name="Doctor_User_ID" Type="Int32" Nullable="false" />
+    <Property Name="AppointmentDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Billing_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Appoinment_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Appointme__Docto__123EB7A3" FromRole="Appointments" ToRole="Users" />
+    <NavigationProperty Name="User1" Relationship="Self.FK__Appointme__Patie__114A936A" FromRole="Appointments" ToRole="Users" />
+    <NavigationProperty Name="Billings" Relationship="Self.FK_Billin_ToTable_1" FromRole="Appointments" ToRole="Billing" />
+    <NavigationProperty Name="Prescriptions" Relationship="Self.FK_Prescriptions_ToTable" FromRole="Appointments" ToRole="Prescriptions" />
+  </EntityType>
+  <EntityType Name="Billing">
+    <Key>
+      <PropertyRef Name="BillID" />
+    </Key>
+    <Property Name="BillID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Biller_User_ID" Type="Int32" Nullable="false" />
+    <Property Name="AppointmentID" Type="Int32" Nullable="false" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BillDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Appointment" Relationship="Self.FK_Billin_ToTable_1" FromRole="Billing" ToRole="Appointments" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Billin_ToTable" FromRole="Billing" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="MedicalTest">
+    <Key>
+      <PropertyRef Name="TestID" />
+    </Key>
+    <Property Name="TestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TestName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Prescribed_Tests" Relationship="Self.FK_Prescribed_Tests_ToTable_1" FromRole="MedicalTests" ToRole="Prescribed_Tests" />
+  </EntityType>
+  <EntityType Name="Medicine">
+    <Key>
+      <PropertyRef Name="MedicineID" />
+    </Key>
+    <Property Name="MedicineID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Medicine_Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Generic_Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Formulation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Prescribed_Medicines" Relationship="Self.FK_Prescribed_Medicines_ToTable_1" FromRole="Medicines" ToRole="Prescribed_Medicines" />
+    <Property Name="Price" Type="Double" />
+    <Property Name="Stock" Type="Int32" />
+    <NavigationProperty Name="Medicine_Billing" Relationship="ayanhalder2705_Model.FK_Medicine_Billing_ToTable_1" FromRole="Medicine" ToRole="Medicine_Billing" />
+  </EntityType>
+  <EntityType Name="Prescribed_Medicines">
+    <Key>
+      <PropertyRef Name="Prescribed_Medicines_ID" />
+    </Key>
+    <Property Name="Prescribed_Medicines_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PrescriptionID" Type="Int32" Nullable="false" />
+    <Property Name="MedicineID" Type="Int32" Nullable="false" />
+    <Property Name="Dosage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Instructions" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Medicine" Relationship="Self.FK_Prescribed_Medicines_ToTable_1" FromRole="Prescribed_Medicines" ToRole="Medicines" />
+    <NavigationProperty Name="Prescription" Relationship="Self.FK_Prescribed_Medicines_ToTable" FromRole="Prescribed_Medicines" ToRole="Prescriptions" />
+    <Property Name="Feed_Days" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Prescribed_Tests">
+    <Key>
+      <PropertyRef Name="Prescribed_Tests_ID" />
+    </Key>
+    <Property Name="Prescribed_Tests_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PrescriptionID" Type="Int32" Nullable="false" />
+    <Property Name="TestID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="MedicalTest" Relationship="Self.FK_Prescribed_Tests_ToTable_1" FromRole="Prescribed_Tests" ToRole="MedicalTests" />
+    <NavigationProperty Name="Prescription" Relationship="Self.FK_Prescribed_Tests_ToTable" FromRole="Prescribed_Tests" ToRole="Prescriptions" />
+  </EntityType>
+  <EntityType Name="Prescription">
+    <Key>
+      <PropertyRef Name="PrescriptionID" />
+    </Key>
+    <Property Name="PrescriptionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AppointmentID" Type="Int32" Nullable="false" />
+    <Property Name="Prescription_File" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Appointment" Relationship="Self.FK_Prescriptions_ToTable" FromRole="Prescriptions" ToRole="Appointments" />
+    <NavigationProperty Name="Prescribed_Medicines" Relationship="Self.FK_Prescribed_Medicines_ToTable" FromRole="Prescriptions" ToRole="Prescribed_Medicines" />
+    <NavigationProperty Name="Prescribed_Tests" Relationship="Self.FK_Prescribed_Tests_ToTable" FromRole="Prescriptions" ToRole="Prescribed_Tests" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__Users__RoleID__0B91BA14" FromRole="Roles" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleID" Type="Int32" Nullable="false" />
+    <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <Property Name="Specialization" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Visit_Fee" Type="Double" />
+    <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__Docto__123EB7A3" FromRole="Users" ToRole="Appointments" />
+    <NavigationProperty Name="Appointments1" Relationship="Self.FK__Appointme__Patie__114A936A" FromRole="Users" ToRole="Appointments" />
+    <NavigationProperty Name="Billings" Relationship="Self.FK_Billin_ToTable" FromRole="Users" ToRole="Billing" />
+    <NavigationProperty Name="Role" Relationship="Self.FK__Users__RoleID__0B91BA14" FromRole="Users" ToRole="Roles" />
+    <NavigationProperty Name="Pharmacy_Billing" Relationship="ayanhalder2705_Model.FK_Table_ToTable" FromRole="User" ToRole="Pharmacy_Billing" />
+    <NavigationProperty Name="Pharmacy_Billing1" Relationship="ayanhalder2705_Model.FK_Table_ToTable_1" FromRole="User" ToRole="Pharmacy_Billing" />
+  </EntityType>
+  <Association Name="FK__Appointme__Docto__123EB7A3">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Appointments" Type="Self.Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Appointments">
+        <PropertyRef Name="Doctor_User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Appointme__Patie__114A936A">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Appointments" Type="Self.Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Appointments">
+        <PropertyRef Name="Patient_User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Billin_ToTable_1">
+    <End Role="Appointments" Type="Self.Appointment" Multiplicity="1" />
+    <End Role="Billing" Type="Self.Billing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Appointments">
+        <PropertyRef Name="AppointmentID" />
+      </Principal>
+      <Dependent Role="Billing">
+        <PropertyRef Name="AppointmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prescriptions_ToTable">
+    <End Role="Appointments" Type="Self.Appointment" Multiplicity="1" />
+    <End Role="Prescriptions" Type="Self.Prescription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Appointments">
+        <PropertyRef Name="AppointmentID" />
+      </Principal>
+      <Dependent Role="Prescriptions">
+        <PropertyRef Name="AppointmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Billin_ToTable">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Billing" Type="Self.Billing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Billing">
+        <PropertyRef Name="Biller_User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prescribed_Tests_ToTable_1">
+    <End Role="MedicalTests" Type="Self.MedicalTest" Multiplicity="1" />
+    <End Role="Prescribed_Tests" Type="Self.Prescribed_Tests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MedicalTests">
+        <PropertyRef Name="TestID" />
+      </Principal>
+      <Dependent Role="Prescribed_Tests">
+        <PropertyRef Name="TestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prescribed_Medicines_ToTable_1">
+    <End Role="Medicines" Type="Self.Medicine" Multiplicity="1" />
+    <End Role="Prescribed_Medicines" Type="Self.Prescribed_Medicines" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Medicines">
+        <PropertyRef Name="MedicineID" />
+      </Principal>
+      <Dependent Role="Prescribed_Medicines">
+        <PropertyRef Name="MedicineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prescribed_Medicines_ToTable">
+    <End Role="Prescriptions" Type="Self.Prescription" Multiplicity="1" />
+    <End Role="Prescribed_Medicines" Type="Self.Prescribed_Medicines" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prescriptions">
+        <PropertyRef Name="PrescriptionID" />
+      </Principal>
+      <Dependent Role="Prescribed_Medicines">
+        <PropertyRef Name="PrescriptionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prescribed_Tests_ToTable">
+    <End Role="Prescriptions" Type="Self.Prescription" Multiplicity="1" />
+    <End Role="Prescribed_Tests" Type="Self.Prescribed_Tests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prescriptions">
+        <PropertyRef Name="PrescriptionID" />
+      </Principal>
+      <Dependent Role="Prescribed_Tests">
+        <PropertyRef Name="PrescriptionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Users__RoleID__0B91BA14">
+    <End Role="Roles" Type="Self.Role" Multiplicity="1" />
+    <End Role="Users" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HospitalContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Appointments" EntityType="Self.Appointment" />
+    <EntitySet Name="Billings" EntityType="Self.Billing" />
+    <EntitySet Name="MedicalTests" EntityType="Self.MedicalTest" />
+    <EntitySet Name="Medicines" EntityType="Self.Medicine" />
+    <EntitySet Name="Prescribed_Medicines" EntityType="Self.Prescribed_Medicines" />
+    <EntitySet Name="Prescribed_Tests" EntityType="Self.Prescribed_Tests" />
+    <EntitySet Name="Prescriptions" EntityType="Self.Prescription" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK__Appointme__Docto__123EB7A3" Association="Self.FK__Appointme__Docto__123EB7A3">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Appointments" EntitySet="Appointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Appointme__Patie__114A936A" Association="Self.FK__Appointme__Patie__114A936A">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Appointments" EntitySet="Appointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Billin_ToTable_1" Association="Self.FK_Billin_ToTable_1">
+      <End Role="Appointments" EntitySet="Appointments" />
+      <End Role="Billing" EntitySet="Billings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prescriptions_ToTable" Association="Self.FK_Prescriptions_ToTable">
+      <End Role="Appointments" EntitySet="Appointments" />
+      <End Role="Prescriptions" EntitySet="Prescriptions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Billin_ToTable" Association="Self.FK_Billin_ToTable">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Billing" EntitySet="Billings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prescribed_Tests_ToTable_1" Association="Self.FK_Prescribed_Tests_ToTable_1">
+      <End Role="MedicalTests" EntitySet="MedicalTests" />
+      <End Role="Prescribed_Tests" EntitySet="Prescribed_Tests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prescribed_Medicines_ToTable_1" Association="Self.FK_Prescribed_Medicines_ToTable_1">
+      <End Role="Medicines" EntitySet="Medicines" />
+      <End Role="Prescribed_Medicines" EntitySet="Prescribed_Medicines" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prescribed_Medicines_ToTable" Association="Self.FK_Prescribed_Medicines_ToTable">
+      <End Role="Prescriptions" EntitySet="Prescriptions" />
+      <End Role="Prescribed_Medicines" EntitySet="Prescribed_Medicines" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prescribed_Tests_ToTable" Association="Self.FK_Prescribed_Tests_ToTable">
+      <End Role="Prescriptions" EntitySet="Prescriptions" />
+      <End Role="Prescribed_Tests" EntitySet="Prescribed_Tests" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Users__RoleID__0B91BA14" Association="Self.FK__Users__RoleID__0B91BA14">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <EntitySet Name="Medicine_Billing" EntityType="ayanhalder2705_Model.Medicine_Billing" />
+    <EntitySet Name="Pharmacy_Billing" EntityType="ayanhalder2705_Model.Pharmacy_Billing" />
+    <AssociationSet Name="FK_Medicine_Billing_ToTable" Association="ayanhalder2705_Model.FK_Medicine_Billing_ToTable">
+      <End Role="Pharmacy_Billing" EntitySet="Pharmacy_Billing" />
+      <End Role="Medicine_Billing" EntitySet="Medicine_Billing" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Medicine_Billing_ToTable_1" Association="ayanhalder2705_Model.FK_Medicine_Billing_ToTable_1">
+      <End Role="Medicine" EntitySet="Medicines" />
+      <End Role="Medicine_Billing" EntitySet="Medicine_Billing" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Table_ToTable" Association="ayanhalder2705_Model.FK_Table_ToTable">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Pharmacy_Billing" EntitySet="Pharmacy_Billing" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Table_ToTable_1" Association="ayanhalder2705_Model.FK_Table_ToTable_1">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Pharmacy_Billing" EntitySet="Pharmacy_Billing" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Medicine_Billing">
+    <Key>
+      <PropertyRef Name="Medicine_Billing_ID" />
+    </Key>
+    <Property Name="Medicine_Billing_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Pharmacy_Billing_ID" Type="Int32" Nullable="false" />
+    <Property Name="MedicineID" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Pharmacy_Billing" Relationship="ayanhalder2705_Model.FK_Medicine_Billing_ToTable" FromRole="Medicine_Billing" ToRole="Pharmacy_Billing" />
+    <NavigationProperty Name="Medicine" Relationship="ayanhalder2705_Model.FK_Medicine_Billing_ToTable_1" FromRole="Medicine_Billing" ToRole="Medicine" />
+  </EntityType>
+  <EntityType Name="Pharmacy_Billing">
+    <Key>
+      <PropertyRef Name="Pharmacy_Billing_ID" />
+    </Key>
+    <Property Name="Pharmacy_Billing_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Pharmacists_User_ID" Type="Int32" Nullable="false" />
+    <Property Name="Patient_User_ID" Type="Int32" />
+    <Property Name="CustomerName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Subtotal" Type="Double" Nullable="false" />
+    <Property Name="Discount" Type="Double" Nullable="false" />
+    <Property Name="Total" Type="Double" Nullable="false" />
+    <Property Name="Invoice" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Medicine_Billing" Relationship="ayanhalder2705_Model.FK_Medicine_Billing_ToTable" FromRole="Pharmacy_Billing" ToRole="Medicine_Billing" />
+    <NavigationProperty Name="User" Relationship="ayanhalder2705_Model.FK_Table_ToTable" FromRole="Pharmacy_Billing" ToRole="User" />
+    <NavigationProperty Name="User1" Relationship="ayanhalder2705_Model.FK_Table_ToTable_1" FromRole="Pharmacy_Billing" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_Medicine_Billing_ToTable">
+    <End Type="ayanhalder2705_Model.Pharmacy_Billing" Role="Pharmacy_Billing" Multiplicity="1" />
+    <End Type="ayanhalder2705_Model.Medicine_Billing" Role="Medicine_Billing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pharmacy_Billing">
+        <PropertyRef Name="Pharmacy_Billing_ID" />
+      </Principal>
+      <Dependent Role="Medicine_Billing">
+        <PropertyRef Name="Pharmacy_Billing_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Medicine_Billing_ToTable_1">
+    <End Type="ayanhalder2705_Model.Medicine" Role="Medicine" Multiplicity="1" />
+    <End Type="ayanhalder2705_Model.Medicine_Billing" Role="Medicine_Billing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Medicine">
+        <PropertyRef Name="MedicineID" />
+      </Principal>
+      <Dependent Role="Medicine_Billing">
+        <PropertyRef Name="MedicineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Table_ToTable">
+    <End Type="ayanhalder2705_Model.User" Role="User" Multiplicity="1" />
+    <End Type="ayanhalder2705_Model.Pharmacy_Billing" Role="Pharmacy_Billing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Pharmacy_Billing">
+        <PropertyRef Name="Pharmacists_User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Table_ToTable_1">
+    <End Type="ayanhalder2705_Model.User" Role="User" Multiplicity="0..1" />
+    <End Type="ayanhalder2705_Model.Pharmacy_Billing" Role="Pharmacy_Billing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Pharmacy_Billing">
+        <PropertyRef Name="Patient_User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

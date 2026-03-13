@@ -1,0 +1,42 @@
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\bin\Debug\Hospital Management System.exe.config
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\bin\Debug\Hospital Management System.exe
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\bin\Debug\Hospital Management System.pdb
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\bin\Debug\EntityFramework.dll
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\bin\Debug\Guna.UI2.dll
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\bin\Debug\EntityFramework.xml
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\obj\Debug\Hospital Management System.csproj.AssemblyReference.cache
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\obj\Debug\Hospital_Management_System.AppointmentPanelDesign.resources
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\obj\Debug\Hospital_Management_System.Appointments.resources
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\obj\Debug\Hospital_Management_System.DoctorPortal.resources
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\obj\Debug\Hospital_Management_System.Login_form.resources
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\obj\Debug\Hospital_Management_System.Prescribe.resources
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\obj\Debug\Hospital_Management_System.Properties.Resources.resources
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\obj\Debug\Hospital Management System.csproj.GenerateResource.cache
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\obj\Debug\Hospital Management System.csproj.CoreCompileInputs.cache
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\obj\Debug\Hospital.78AF1D08.Up2Date
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\obj\Debug\Hospital Management System.exe
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\obj\Debug\Hospital Management System.pdb
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\obj\Debug\Hospital Management System.exe.config
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\obj\Debug\Hospital_Management_System.AdminPortal.resources
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\obj\Debug\Hospital_Management_System.ManagerPortal.resources
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\obj\Debug\Hospital_Management_System.PatientPortal.resources
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\obj\Debug\Hospital_Management_System.ReceptionistPortal.resources
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\obj\Debug\Hospital_Management_System.UserProfileForm.resources
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\obj\Debug\Hospital_Management_System.ManageUsers.resources
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\obj\Debug\Hospital_Management_System.AddUserForm.resources
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\obj\Debug\Hospital_Management_System.UpdateDeleteUser.resources
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\bin\Debug\itextsharp.dll
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\bin\Debug\itextsharp.xml
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\obj\Debug\Hospital_Management_System.Appointment_form.resources
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\obj\Debug\Hospital_Management_System.Billing_form.resources
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\obj\Debug\Hospital_Management_System.AddUpdateAppointment.resources
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\obj\Debug\Hospital_Management_System.GenerateBillForm.resources
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\obj\Debug\Hospital_Management_System.AppointmentDetails.resources
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\obj\Debug\Hospital_Management_System.ManageMedicines.resources
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\obj\Debug\Hospital_Management_System.PharmacistPortal.resources
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\obj\Debug\Hospital_Management_System.PharmacyBilling.resources
+C:\Users\tamji\Desktop\Our Final Project\Hospital Management System\obj\Debug\Hospital_Management_System.PharmacyStatement.resources

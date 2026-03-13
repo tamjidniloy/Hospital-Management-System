@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ayanhalder2705_ModelStoreContainer" CdmEntityContainer="HospitalContext">
+    <EntitySetMapping Name="Appointments">
+      <EntityTypeMapping TypeName="ayanhalder2705_Model.Appointment">
+        <MappingFragment StoreEntitySet="Appointments">
+          <ScalarProperty Name="AppointmentID" ColumnName="AppointmentID" />
+          <ScalarProperty Name="Patient_User_ID" ColumnName="Patient_User_ID" />
+          <ScalarProperty Name="Doctor_User_ID" ColumnName="Doctor_User_ID" />
+          <ScalarProperty Name="AppointmentDate" ColumnName="AppointmentDate" />
+          <ScalarProperty Name="Billing_Status" ColumnName="Billing_Status" />
+          <ScalarProperty Name="Appoinment_Status" ColumnName="Appoinment_Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Billings">
+      <EntityTypeMapping TypeName="ayanhalder2705_Model.Billing">
+        <MappingFragment StoreEntitySet="Billing">
+          <ScalarProperty Name="BillID" ColumnName="BillID" />
+          <ScalarProperty Name="Biller_User_ID" ColumnName="Biller_User_ID" />
+          <ScalarProperty Name="AppointmentID" ColumnName="AppointmentID" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="BillDate" ColumnName="BillDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MedicalTests">
+      <EntityTypeMapping TypeName="ayanhalder2705_Model.MedicalTest">
+        <MappingFragment StoreEntitySet="MedicalTests">
+          <ScalarProperty Name="TestID" ColumnName="TestID" />
+          <ScalarProperty Name="TestName" ColumnName="TestName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Medicines">
+      <EntityTypeMapping TypeName="ayanhalder2705_Model.Medicine">
+        <MappingFragment StoreEntitySet="Medicines">
+          <ScalarProperty Name="Stock" ColumnName="Stock" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="MedicineID" ColumnName="MedicineID" />
+          <ScalarProperty Name="Medicine_Name" ColumnName="Medicine_Name" />
+          <ScalarProperty Name="Generic_Name" ColumnName="Generic_Name" />
+          <ScalarProperty Name="Formulation" ColumnName="Formulation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prescribed_Medicines">
+      <EntityTypeMapping TypeName="ayanhalder2705_Model.Prescribed_Medicines">
+        <MappingFragment StoreEntitySet="Prescribed_Medicines">
+          <ScalarProperty Name="Feed_Days" ColumnName="Feed_Days" />
+          <ScalarProperty Name="Prescribed_Medicines_ID" ColumnName="Prescribed_Medicines_ID" />
+          <ScalarProperty Name="PrescriptionID" ColumnName="PrescriptionID" />
+          <ScalarProperty Name="MedicineID" ColumnName="MedicineID" />
+          <ScalarProperty Name="Dosage" ColumnName="Dosage" />
+          <ScalarProperty Name="Instructions" ColumnName="Instructions" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prescribed_Tests">
+      <EntityTypeMapping TypeName="ayanhalder2705_Model.Prescribed_Tests">
+        <MappingFragment StoreEntitySet="Prescribed_Tests">
+          <ScalarProperty Name="Prescribed_Tests_ID" ColumnName="Prescribed_Tests_ID" />
+          <ScalarProperty Name="PrescriptionID" ColumnName="PrescriptionID" />
+          <ScalarProperty Name="TestID" ColumnName="TestID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prescriptions">
+      <EntityTypeMapping TypeName="ayanhalder2705_Model.Prescription">
+        <MappingFragment StoreEntitySet="Prescriptions">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="PrescriptionID" ColumnName="PrescriptionID" />
+          <ScalarProperty Name="AppointmentID" ColumnName="AppointmentID" />
+          <ScalarProperty Name="Prescription_File" ColumnName="Prescription_File" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="ayanhalder2705_Model.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="ayanhalder2705_Model.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Specialization" ColumnName="Specialization" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="Visit_Fee" ColumnName="Visit_Fee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Medicine_Billing">
+      <EntityTypeMapping TypeName="ayanhalder2705_Model.Medicine_Billing">
+        <MappingFragment StoreEntitySet="Medicine_Billing">
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="MedicineID" ColumnName="MedicineID" />
+          <ScalarProperty Name="Pharmacy_Billing_ID" ColumnName="Pharmacy_Billing_ID" />
+          <ScalarProperty Name="Medicine_Billing_ID" ColumnName="Medicine_Billing_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pharmacy_Billing">
+      <EntityTypeMapping TypeName="ayanhalder2705_Model.Pharmacy_Billing">
+        <MappingFragment StoreEntitySet="Pharmacy_Billing">
+          <ScalarProperty Name="Invoice" ColumnName="Invoice" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="Patient_User_ID" ColumnName="Patient_User_ID" />
+          <ScalarProperty Name="Pharmacists_User_ID" ColumnName="Pharmacists_User_ID" />
+          <ScalarProperty Name="Pharmacy_Billing_ID" ColumnName="Pharmacy_Billing_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
